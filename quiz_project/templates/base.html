@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Online Exam</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    $(document).ready(function()
+    {
+        $("#but1").click(function()
+        { 
+            $(".rb").show();
+            $(".rb").attr("disabled",true)
+        });
+    });
+    function getanswers()
+    {
+      document.getElementById(Useranswers).innerHTML="";
+      var e=document.getElementsByTagName('input');
+      for(i=0;i<=e.length;i++)
+      {
+        if(e[i].type=="radio")
+        {
+          if(e[i].checked)
+          {
+            document.getElementById(Useranswers).innerHTML+="Q "+e[i].name+"The answer You are Selected Is :"+e[i].value+"<br/>";
+          }
+        }
+      }
+    }
+  </Script>
+ 
+</head>
+<body>
+  <center>
+     <h1>Online Examinations</h1>
+     <h3></h3>
+  </center>
+    <div style="padding-left: 30px;">
+      {% for result in Exam %}
+      <table>
+        <tr>
+          <td>{{result.id}}, {{result.question}}
+        </tr>
+        <tr>
+          <td><input type="radio" name="{{result.id}}" id="option1" class="rb" value="{{result.option1}}">{{result.option1}}</td>
+        </tr>
+        <tr>
+          <td><input type="radio" name="{{result.id}}" id="option2" class="rb" value="{{result.option2}}">{{result.option2}}</td>
+        </tr>
+        <tr>
+          <td><input type="radio" name="{{result.id}}" id="option3" class="rb" value="{{result.option3}}">{{result.option3}}</td>
+        </tr>
+        <tr>
+          <td><input type="radio" name="{{result.id}}" id="option4" class="rb" value="{{result.option4}}">{{result.option4}}</td>
+        </tr>
+        <tr>
+          <td><label id="carrans" class="rb" style="display: none; color: green;"><b>Teh Correct Answer Is : {{result.carrans}}</b></label></td>
+        </tr>
+        <hr/>
+      </table>
+      {% endfor %}
+        
+    <input type="submit" value="Click for Results" id="but1" onclick="getanswers();"/>
+    <hr/>
+    <b id="UserAnswers"></b>
+    <hr/>
+    </div>
+
+
+</body>
+</html>

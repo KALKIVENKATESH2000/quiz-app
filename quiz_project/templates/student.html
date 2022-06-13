@@ -1,0 +1,55 @@
+<h1>student</h1>
+<html>
+    <head>
+        <style>
+            table, th, td {
+              border: 2px solid black;
+            }
+            </style>
+        
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="">result</a>
+                </li>
+                <li class="nav-item">
+                  {% comment %} <a class="nav-link" href="#">issued books</a> {% endcomment %}
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                  </li>
+                
+              </ul>
+            </div>
+          </nav>
+        <div class="container-fluid">
+            <div class="row" >
+                <div class="offset-md-3 col-md-6">
+                    <br>
+                    <h3 style="color:blue;">welcome {{user.username}}</h3>
+                    <br>
+                    <table>
+                        <tr>
+                          <th>Class</th>
+                          <th>Test Link</th>
+                        </tr>
+                        <tr>
+                          <td>2nd class</td>
+                          <td><a href="{% url 'exam' %}">start_exam</td>
+                        </tr>
+                        <tr>
+                          <td>3rd class</td>
+                          <td><a href="{% url 'exam' %}">start_exam</td>
+                        </tr>
+                      </table>
+                     
+                </div>
+            </div>
+        </div>
+    </body>
+    
+
+</html>
